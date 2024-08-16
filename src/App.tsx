@@ -10,10 +10,11 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
+import { gift, home, business, card, person } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
+import Filiais from './pages/filiais/Filiais';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -44,44 +45,87 @@ import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import Acesso from './pages/login/Acesso';
+import React from 'react'; 
+import { useLocation } from 'react-router-dom';
+import Perfil from './pages/perfil/Perfil';
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
-          </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
-          </Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/tab1" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon aria-hidden="true" icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon aria-hidden="true" icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon aria-hidden="true" icon={square} />
-            <IonLabel>Tab 3</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+
+const App: React.FC = () => {
+ 
+
+  React.useEffect(() => {
+    
+  }, [])
+
+
+  return (
+    <> 
+       
+      <IonApp>
+        <IonReactRouter>
+            
+            <IonTabs>
+              
+              <IonRouterOutlet>
+                <Route exact path="/filiais">
+                  <Filiais />
+                </Route>
+                <Route exact path="/acesso">
+                  <Acesso />
+                </Route>
+                <Route exact path="/home">
+                  <Tab1 />
+                </Route>
+                <Route exact path="/tab2">
+                  <Tab2 />
+                </Route>
+                <Route path="/tab3">
+                  <Tab3 />
+                </Route>
+                <Route path="/config">
+                  <Perfil />
+                </Route>
+                <Route exact path="/">
+                  <Redirect to="/acesso" />
+                </Route>
+              </IonRouterOutlet>
+
+              <IonTabBar   slot="bottom">
+
+              <IonTabButton tab="inicio" href="/home">
+                  <IonIcon aria-hidden="true" icon={home} />
+                  <IonLabel>Início </IonLabel>
+                </IonTabButton>
+                
+                <IonTabButton tab="filiais" href="/filiais">
+                  <IonIcon aria-hidden="true" icon={business} />
+                  <IonLabel>Filiais </IonLabel>
+                </IonTabButton>
+
+                <IonTabButton tab="tab2" href="/tab2">
+                  <IonIcon aria-hidden="true" icon={card} />
+                  <IonLabel>Compras</IonLabel>
+                </IonTabButton>
+
+                <IonTabButton tab="tab3" href="/tab3">
+                  <IonIcon aria-hidden="true" icon={gift} />
+                  <IonLabel>Produtos</IonLabel>
+                </IonTabButton>
+
+                <IonTabButton tab="perfil" href="/config">
+                  <IonIcon aria-hidden="true" icon={person} />
+                  <IonLabel>Perfil</IonLabel>
+                </IonTabButton>
+
+              </IonTabBar>
+            </IonTabs>
+        </IonReactRouter>
+      </IonApp>
+    </>
+  )
+}
 
 export default App;

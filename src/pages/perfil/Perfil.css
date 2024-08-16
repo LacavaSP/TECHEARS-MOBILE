@@ -1,0 +1,10 @@
+.perfil-info > * {
+    color: rgba(0, 0, 0, 0.917);
+    font-size: 20px !important;
+}
+
+.deslogar {
+    margin-top: 10px;
+    width: 100%;
+    --color: white;
+}

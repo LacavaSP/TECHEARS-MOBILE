@@ -1,0 +1,59 @@
+.titulo-login {
+    text-align: center;
+    font-size: 48px;
+}
+
+.cartao-login {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-54.5%, -54.5%);
+
+    height: 80vh; 
+    width: 95vw;
+    --ion-text-color: rgb(0, 0, 0) !important;
+    --ion-card-background: white;
+}
+
+ .login-input {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.612) !important;
+    color: black !important;
+    width: 100%;
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+ }
+
+ .techears-icon {
+    font-size: 65px;
+    color: black;
+ }
+
+ .conteudo-login { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70%;
+    justify-content: space-evenly;
+ }
+ 
+ .botao-login {
+    width: 95%;
+    --background: #025961;
+    --color: white;
+    font-weight: bold;
+    font-size: 20px;
+ }
+
+ #fgtpswd:active {
+    color: black !important;
+    border-bottom: 1px solid black;
+ }
+
+ .aviso-login {
+    font-size: 20px;
+    --background: #610702;
+ }

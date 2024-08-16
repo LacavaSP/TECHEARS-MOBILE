@@ -1,0 +1,9 @@
+.mapa-container {
+   width: 95%;
+   height: 45vh;
+}
+
+.container-geo {
+   display: flex;
+   justify-content: center;
+}

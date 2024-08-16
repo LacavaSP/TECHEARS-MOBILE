@@ -1,0 +1,8 @@
+.cartao-tela-inicial {
+    --background: white;
+    height: 90vh;
+}
+
+.tituloTelaInicial {
+    --color: black;
+}
