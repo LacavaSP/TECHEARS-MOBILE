@@ -1,6 +1,6 @@
 import { IonPage } from '@ionic/react';
 import { useEffect, useState } from 'react';
-import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet'
+import { MapContainer, } from 'react-leaflet'
  
 import './Mapa.css';
 import customTechEarsNodeRedAxios from '../../global/customTechEarsNodeRedAxios';

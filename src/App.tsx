@@ -49,6 +49,7 @@ import Acesso from './pages/login/Acesso';
 import React from 'react'; 
 import { useLocation } from 'react-router-dom';
 import Perfil from './pages/perfil/Perfil';
+import FiliaisForm from './pages/filiaisForm/FiliaisForm';
 
 setupIonicReact();
 
@@ -79,8 +80,8 @@ const App: React.FC = () => {
                 <Route exact path="/home">
                   <Tab1 />
                 </Route>
-                <Route exact path="/tab2">
-                  <Tab2 />
+                <Route exact path="/filial-form">
+                  <FiliaisForm />
                 </Route>
                 <Route path="/tab3">
                   <Tab3 />

@@ -1,0 +1,15 @@
+.techears-list { 
+    --ion-background-color: #ffffff !important; 
+}
+
+.form-listagem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form-listagem > ion-list {
+    width: 100%;
+    margin-top: 10px;
+}

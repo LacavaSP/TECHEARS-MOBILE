@@ -1,0 +1,7 @@
+.form-filiais {
+    background-color: white;
+}
+
+.form-filiais > * {
+    border-bottom: 1px solid #0000004f;
+}

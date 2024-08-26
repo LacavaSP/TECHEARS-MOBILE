@@ -16,9 +16,9 @@ const Acesso: React.FC = () => {
   
   const handleLogin = async () => {
     try {
-      const dados = await axios.post('http://localhost:1880/api/login', {
-        email,
-        passwd: password
+      const dados = await axios.post('http://localhost:1881/api/rest/login', {
+        username: email,
+        password: password
       })
       localStorage.setItem('idUsuarioLogado', dados.data.userId)
       localStorage.setItem('token', dados.data.token)
