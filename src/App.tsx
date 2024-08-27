@@ -50,6 +50,9 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Perfil from './pages/perfil/Perfil';
 import FiliaisForm from './pages/filiaisForm/FiliaisForm';
+import './Global.css'
+import FiliaisEdit from './pages/filiaisEdit/FiliaisEdit';
+
 
 setupIonicReact();
 
@@ -82,6 +85,9 @@ const App: React.FC = () => {
                 </Route>
                 <Route exact path="/filial-form">
                   <FiliaisForm />
+                </Route>
+                <Route exact path="/filial-edit/:id">
+                  <FiliaisEdit />
                 </Route>
                 <Route path="/tab3">
                   <Tab3 />

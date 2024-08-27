@@ -1,14 +1,16 @@
 import { IonButton, IonContent, IonHeader, IonInput, IonPage, IonTitle, IonToolbar } from '@ionic/react';
   
-import './FiliaisForm.css';
+import './FiliaisEdit.css';
 import { IonToast } from '@ionic/react';
 import React from 'react';
 import customTechEarsNodeRedAxios from '../../global/customTechEarsNodeRedAxios';
-import { useHistory } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { MapContainer } from 'react-leaflet';
 import MapComponentFilial from '../MapComponentFilial';
-const FiliaisForm: React.FC = () => {
+const FiliaisEdit: React.FC = () => {
   const history = useHistory() 
+
+  const {id} = useParams()
   const [nome, setNome] = React.useState<any>('')
   const [mensagem, setMensagem] = React.useState<any>('')
   const [isOpen, setIsOpen] = React.useState<any>(false)
@@ -20,6 +22,33 @@ const FiliaisForm: React.FC = () => {
   const [loading, setLoading] = React.useState<any>(true)
   const [loadingSave, setLoadingSave] = React.useState<any>(false)
    
+  React.useEffect(() => {
+    console.log(id)
+    
+    async function obterFilial () {
+      try {
+        setLoadingSave(true)
+        const respostaServidor = await customTechEarsNodeRedAxios.get('/api/filial/' + id)
+   
+        const filial = respostaServidor.data
+        console.log(filial)
+        setCoordenadorId(parseInt(filial.coordenadorId))
+        setGeoX(parseFloat(filial.geoX))
+        setGeoY(parseFloat(filial.geoY))
+        setNome(filial.nome)
+        setMatricula(filial.matricula)
+      } catch(e) {
+        setMensagem('Erro ao consultar filial')
+      } finally {
+        setLoadingSave(false)
+      }
+    }
+
+    if (id) {
+      obterFilial()
+    }
+
+  }, [id])
 
   React.useEffect(() => {
     if (mensagem) {
@@ -66,6 +95,7 @@ const FiliaisForm: React.FC = () => {
     setLoadingSave(true)
     console.log('botao')
     const filial = {
+      id: parseInt(id),
       matricula,
       nome,
       coordenadorId: parseInt(coordenadorId),
@@ -74,10 +104,11 @@ const FiliaisForm: React.FC = () => {
     }
 
     try {
-      await customTechEarsNodeRedAxios.post('api/filiais', filial)
-      setMensagem('Filial Cadastrada com Sucesso')
+      await customTechEarsNodeRedAxios.put('api/filiais', filial)
+      setMensagem('Filial Editada com Sucesso')
+      window.location.reload()
     } catch(e) {
-      setMensagem('Erro ao Cadastrar Filial')
+      setMensagem('Erro ao Editar Filial')
     } finally {
       setLoadingSave(false)
     }
@@ -89,7 +120,7 @@ const FiliaisForm: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           
-          <IonTitle>Cadastro de Filiais</IonTitle>
+          <IonTitle>Edição de Filial</IonTitle>
      
         </IonToolbar>
       </IonHeader>
@@ -97,14 +128,14 @@ const FiliaisForm: React.FC = () => {
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Cadastro de Filiais</IonTitle>
+            <IonTitle size="large">Edição de Filial</IonTitle>
           </IonToolbar>
         </IonHeader>
 
           {
             loadingSave ? (<h1>Salvando...</h1>) : ''
           }
-        <div className={loadingSave ? 'carregando' : ''}>
+        <div className={loadingSave ? 'Aguarde...' : ''}>
           
           
 
@@ -160,4 +191,4 @@ const FiliaisForm: React.FC = () => {
   );
 };
 
-export default FiliaisForm;
+export default FiliaisEdit;

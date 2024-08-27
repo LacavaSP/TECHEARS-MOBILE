@@ -1,10 +1,11 @@
-import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonContent, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar } from '@ionic/react';
   
 import './Filiais.css';
 import { IonItem, IonLabel, IonList } from '@ionic/react';
 import React from 'react';
 import customTechEarsNodeRedAxios from '../../global/customTechEarsNodeRedAxios';
 import { useHistory } from 'react-router';
+import { pencil } from 'ionicons/icons';
 const Filiais: React.FC = () => {
   const history = useHistory()
   const [filiais, setFiliais] = React.useState<any>([])
@@ -16,6 +17,10 @@ const Filiais: React.FC = () => {
 
   const telaCadastro = () => {
     history.push('/filial-form')
+  }
+
+  const telaEdicao = (registro: any) => {
+    history.push('/filial-edit/' + registro.id)
   }
 
   React.useEffect(() => {
@@ -50,6 +55,7 @@ const Filiais: React.FC = () => {
             {
               filiais.map((filial: any) => <>
                 <IonItem>
+                  <IonIcon onClick={(e:any) => telaEdicao(filial)} icon={pencil} color="primary"></IonIcon>
                   <IonLabel>{`${filial.matricula} - ${filial.nome}`}</IonLabel>
                 </IonItem>
               </>)
